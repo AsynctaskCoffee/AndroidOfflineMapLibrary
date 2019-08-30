@@ -18,22 +18,22 @@ You need to download offline map-tiles as SQLite format. And you should put it u
 1. First you need to download Mobile Atlas Creator from [HERE](https://sourceforge.net/projects/mobac/files/Mobile%20Atlas%20Creator/MOBAC%202.0/Mobile%20Atlas%20Creator%202.1.2.zip/download) 
 
 2. Open MOBAC and select Osmdroid SQLite
-<img src="picsfortut/q1.png" width="350"> 
+<img src="picsfortut/q1.png" width="650"> 
 
 3. Select map source (selecting osm is better) and zoom-levels (15-14-13-12 are ideal) as you desire from left panel. 
-<img src="picsfortut/q2.png" width="350"> 
+<img src="picsfortut/q2.png" width="650"> 
 
 4. Draw a area (small areas consume less storage). And press add selection button from left panel.
-<img src="picsfortut/q3.png" width="350"> 
+<img src="picsfortut/q3.png" width="650"> 
 
 5. As you can see layers are selected. After selecting layers press Create Atlas button. 
 <img src="picsfortut/q4.png" width="350"> 
 
 6. Select 'Ignore download errors and continue automatically' and continue.
-<img src="picsfortut/q5.png" width="350">
+<img src="picsfortut/q5.png" width="650">
 
 7. After finishing download process rename the SQLite file as 'map.sqlite' and copy it into assets folder.
-<img src="picsfortut/q6.png" width="350"> 
+<img src="picsfortut/q6.png" width="450"> 
 
 And yes! You completed the hard part. Rest of the steps just coding few lines.
 
