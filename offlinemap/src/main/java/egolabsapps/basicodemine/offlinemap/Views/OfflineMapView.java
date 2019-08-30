@@ -35,6 +35,7 @@ public class OfflineMapView extends FrameLayout implements MapListener, Permissi
     private Activity activity;
     private MapUtils mapUtils;
     private SpinKitView kitView;
+    private boolean isAnimatePickerAdded = false;
 
     public void init(Activity activity, MapListener mapListener) {
         this.activity = activity;
@@ -51,8 +52,8 @@ public class OfflineMapView extends FrameLayout implements MapListener, Permissi
     }
 
 
-    public void setAnimatedLocationPicker(boolean isAnimatedLoactionPickerActive, GeoPointListener geoPointListener,MapUtils mapUtils) {
-        if (activity != null && mapUtils != null && isAnimatedLoactionPickerActive) {
+    public void setAnimatedLocationPicker(boolean isAnimatedLocationPickerActive, GeoPointListener geoPointListener, MapUtils mapUtils) {
+        if (activity != null && mapUtils != null && isAnimatedLocationPickerActive && !isAnimatePickerAdded) {
             ImageView locationToggle = new ImageView(activity);
             ImageView locationCircle = new ImageView(activity);
 
@@ -71,9 +72,8 @@ public class OfflineMapView extends FrameLayout implements MapListener, Permissi
             addView(locationToggle);
 
             mapUtils.setAnimatedView(locationToggle, geoPointListener);
+            isAnimatePickerAdded = true;
         }
-
-
     }
 
     public OfflineMapView(@NonNull Context context, @Nullable AttributeSet attrs) {

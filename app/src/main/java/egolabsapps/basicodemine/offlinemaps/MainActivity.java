@@ -2,6 +2,7 @@ package egolabsapps.basicodemine.offlinemaps;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import egolabsapps.basicodemine.offlinemap.Views.OfflineMapView;
 public class MainActivity extends AppCompatActivity implements MapListener, GeoPointListener {
 
     OfflineMapView offlineMapView;
+    MapUtils mapUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +36,8 @@ public class MainActivity extends AppCompatActivity implements MapListener, GeoP
     public void mapLoadSuccess(MapView mapView, MapUtils mapUtils) {
 
         // GeoPoint belongs to ISTANBUL heart of the world :)
-
-        offlineMapView.setInitialPositionAndZoom(new GeoPoint(41.025135, 28.974101), 15.5);
-        offlineMapView.setAnimatedLocationPicker(true, this, mapUtils);
+        this.mapUtils = mapUtils;
+        offlineMapView.setInitialPositionAndZoom(new GeoPoint(41.025135, 28.974101), 14.5);
 
         // 41.025135, 28.974101 Galata Tower
 
@@ -63,5 +64,10 @@ public class MainActivity extends AppCompatActivity implements MapListener, GeoP
         //Selected GeoPoint Returns Here
 
         Toast.makeText(this, geoPoint.toDoubleString(), Toast.LENGTH_SHORT).show();
+    }
+
+    public void activateAnimatePicker(View view) {
+        if (mapUtils != null)
+            offlineMapView.setAnimatedLocationPicker(true, this, mapUtils);
     }
 }
