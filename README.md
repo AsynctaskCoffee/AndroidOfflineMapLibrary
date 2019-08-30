@@ -7,15 +7,24 @@ Offline OpenStreet Map Library (No Internet Required) You dont have to even one-
 
 ## Why this project exists
 
-Offline map usage is kind a problem for developers and there are rare 
+Offline map usage is kind a problem for developers and there are rare documentations. I believe this library will helpful for developers. 
 
 ## Features and Usage
 
-### Easy implementation
+### Implementation
  
-You need to download offline maptiles as SQLite format. And you should put them under assets folder.
- 
- 
+You need to download offline map-tiles as SQLite format. And you should put it under assets folder. Let me explain how to download offline map-tiles step-by-step;
+
+1. First you need to download Mobile Atlas Creator from [HERE](https://sourceforge.net/projects/mobac/files/Mobile%20Atlas%20Creator/MOBAC%202.0/Mobile%20Atlas%20Creator%202.1.2.zip/download) 
+2. <img src="previews/q1.png" width="350"> Open MOBAC and select Osmdroid SQLite
+3. <img src="previews/q2.png" width="350"> Select map source (selecting osm is better) and zoom-levels (15-14-13-12 are ideal) as you desire from left panel. 
+4. <img src="previews/q3.png" width="350"> Draw a area (small areas consume less storage). And press add selection button from left panel.
+5. <img src="previews/q4.png" width="350"> As you can see layers are selected. After selecting layers press Create Atlas button. 
+6. <img src="previews/q5.png" width="350"> Select 'Ignore download errors and continue automatically' and continue.
+7. <img src="previews/q6.png" width="350"> After finishing download process rename the SQLite file as 'map.sqlite' and copy it into assets folder.
+
+And yes! You completed the hard part. Rest of the steps just coding few lines.
+
 #### Java 
 
 ```java
