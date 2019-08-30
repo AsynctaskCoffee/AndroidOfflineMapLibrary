@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
+
+import java.util.Map;
 
 import egolabsapps.basicodemine.offlinemap.Interfaces.GeoPointListener;
 import egolabsapps.basicodemine.offlinemap.Interfaces.MapListener;
@@ -32,8 +35,21 @@ public class MainActivity extends AppCompatActivity implements MapListener, GeoP
 
         // GeoPoint belongs to ISTANBUL heart of the world :)
 
-        offlineMapView.setInitialPositionAndZoom(new GeoPoint(41.011099, 28.996885), 15.5);
+        offlineMapView.setInitialPositionAndZoom(new GeoPoint(41.025135, 28.974101), 15.5);
         offlineMapView.setAnimatedLocationPicker(true, this, mapUtils);
+
+        // 41.025135, 28.974101 Galata Tower
+
+        Marker marker = new Marker(mapView);
+        marker.setPosition(new GeoPoint(41.025135, 28.974101));
+        marker.setIcon(getResources().getDrawable(R.drawable.galata_tower));
+
+        // marker.setImage(drawable);
+
+        marker.setTitle("Hello Istanbul");
+        marker.showInfoWindow();
+        mapView.getOverlays().add(marker);
+        mapView.invalidate();
     }
 
     @Override

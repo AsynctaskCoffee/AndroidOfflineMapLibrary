@@ -9,7 +9,6 @@ import android.os.Environment;
 import android.view.MotionEvent;
 import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.osmdroid.api.IMapController;
