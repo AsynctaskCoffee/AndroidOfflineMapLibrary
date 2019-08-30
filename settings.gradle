@@ -1,0 +1,2 @@
+include ':app', ':offlinemap'
+rootProject.name='My Application'
