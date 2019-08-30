@@ -15,27 +15,27 @@ Offline map usage is kind a problem for developers and there are rare documentat
  
 You need to download offline map-tiles as SQLite format. And you should put it under assets folder. Let me explain how to download offline map-tiles step-by-step;
 
-1. First you need to download Mobile Atlas Creator from [HERE](https://sourceforge.net/projects/mobac/files/Mobile%20Atlas%20Creator/MOBAC%202.0/Mobile%20Atlas%20Creator%202.1.2.zip/download) 
+##### 1. First you need to download Mobile Atlas Creator from [HERE](https://sourceforge.net/projects/mobac/files/Mobile%20Atlas%20Creator/MOBAC%202.0/Mobile%20Atlas%20Creator%202.1.2.zip/download) 
 
-2. Open MOBAC and select Osmdroid SQLite
+##### 2. Open MOBAC and select Osmdroid SQLite
 <img src="picsfortut/q1.png" width="650"> 
 
-3. Select map source (selecting osm is better) and zoom-levels (15-14-13-12 are ideal) as you desire from left panel. 
+##### 3. Select map source (selecting osm is better) and zoom-levels (15-14-13-12 are ideal) as you desire from left panel. 
 <img src="picsfortut/q2.png" width="650"> 
 
-4. Draw a area (small areas consume less storage). And press add selection button from left panel.
+##### 4. Draw a area (small areas consume less storage). And press add selection button from left panel.
 <img src="picsfortut/q3.png" width="650"> 
 
-5. As you can see layers are selected. After selecting layers press Create Atlas button. 
+##### 5. As you can see layers are selected. After selecting layers press Create Atlas button. 
 <img src="picsfortut/q4.png" width="350"> 
 
-6. Select 'Ignore download errors and continue automatically' and continue.
+##### 6. Select 'Ignore download errors and continue automatically' and continue.
 <img src="picsfortut/q5.png" width="650">
 
-7. After finishing download process rename the SQLite file as 'map.sqlite' and copy it into assets folder.
+##### 7. After finishing download process rename the SQLite file as 'map.sqlite' and copy it into assets folder.
 <img src="picsfortut/q6.png" width="450"> 
 
-And yes! You completed the hard part. Rest of the steps just coding few lines.
+##### 8. And yes! You completed the hard part. Rest of the steps just coding few lines.
 
 #### Java 
 
@@ -43,6 +43,7 @@ And yes! You completed the hard part. Rest of the steps just coding few lines.
 public class MainActivity extends AppCompatActivity implements MapListener, GeoPointListener {
 
     OfflineMapView offlineMapView;
+    MapUtils mapUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +58,21 @@ public class MainActivity extends AppCompatActivity implements MapListener, GeoP
     public void mapLoadSuccess(MapView mapView, MapUtils mapUtils) {
 
         // GeoPoint belongs to ISTANBUL heart of the world :)
+        this.mapUtils = mapUtils;
+        offlineMapView.setInitialPositionAndZoom(new GeoPoint(41.025135, 28.974101), 14.5);
 
-        offlineMapView.setInitialPositionAndZoom(new GeoPoint(41.011099, 28.996885), 15.5);
-        offlineMapView.setAnimatedLocationPicker(true, this, mapUtils);
+        // 41.025135, 28.974101 Galata Tower
+
+        Marker marker = new Marker(mapView);
+        marker.setPosition(new GeoPoint(41.025135, 28.974101));
+        marker.setIcon(getResources().getDrawable(R.drawable.galata_tower));
+
+        // marker.setImage(drawable);
+
+        marker.setTitle("Hello Istanbul");
+        marker.showInfoWindow();
+        mapView.getOverlays().add(marker);
+        mapView.invalidate();
     }
 
     @Override
@@ -73,6 +86,11 @@ public class MainActivity extends AppCompatActivity implements MapListener, GeoP
         //Selected GeoPoint Returns Here
 
         Toast.makeText(this, geoPoint.toDoubleString(), Toast.LENGTH_SHORT).show();
+    }
+
+    public void activateAnimatePicker(View view) {
+        if (mapUtils != null)
+            offlineMapView.setAnimatedLocationPicker(true, this, mapUtils);
     }
 }
 ```
@@ -114,6 +132,8 @@ class MainActivityKotlin : AppCompatActivity(), MapListener, GeoPointListener {
 }
 ```
 
+
+#### Or XML
 ```xml    
 <egolabsapps.basicodemine.offlinemap.Views.OfflineMapView
         android:id="@+id/map"
@@ -123,6 +143,11 @@ class MainActivityKotlin : AppCompatActivity(), MapListener, GeoPointListener {
         app:initialFocusLongitude="28.973436"
         app:zoomLevel="15" />
 ```
+
+###### Result: Say Hi to ISTANBUL :)
+
+<img src="picsfortut/q7.png" width="350"> <img src="picsfortut/q8.gif" width="350">  
+
 
 ## Implementation
 
@@ -137,7 +162,9 @@ class MainActivityKotlin : AppCompatActivity(), MapListener, GeoPointListener {
 ###### Add the dependency
 
 ```groovy
-
+    
+    implementation 'com.github.MKergall:osmbonuspack:6.6.0'
+    implementation 'org.osmdroid:osmdroid-android:6.1.0'
 ```
 
 ## License
