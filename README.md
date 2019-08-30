@@ -16,12 +16,24 @@ Offline map usage is kind a problem for developers and there are rare documentat
 You need to download offline map-tiles as SQLite format. And you should put it under assets folder. Let me explain how to download offline map-tiles step-by-step;
 
 1. First you need to download Mobile Atlas Creator from [HERE](https://sourceforge.net/projects/mobac/files/Mobile%20Atlas%20Creator/MOBAC%202.0/Mobile%20Atlas%20Creator%202.1.2.zip/download) 
-2. <img src="previews/q1.png" width="350"> Open MOBAC and select Osmdroid SQLite
-3. <img src="previews/q2.png" width="350"> Select map source (selecting osm is better) and zoom-levels (15-14-13-12 are ideal) as you desire from left panel. 
-4. <img src="previews/q3.png" width="350"> Draw a area (small areas consume less storage). And press add selection button from left panel.
-5. <img src="previews/q4.png" width="350"> As you can see layers are selected. After selecting layers press Create Atlas button. 
-6. <img src="previews/q5.png" width="350"> Select 'Ignore download errors and continue automatically' and continue.
-7. <img src="previews/q6.png" width="350"> After finishing download process rename the SQLite file as 'map.sqlite' and copy it into assets folder.
+
+2. Open MOBAC and select Osmdroid SQLite
+<img src="picsfortut/q1.png" width="350"> 
+
+3. Select map source (selecting osm is better) and zoom-levels (15-14-13-12 are ideal) as you desire from left panel. 
+<img src="picsfortut/q2.png" width="350"> 
+
+4. Draw a area (small areas consume less storage). And press add selection button from left panel.
+<img src="picsfortut/q3.png" width="350"> 
+
+5. As you can see layers are selected. After selecting layers press Create Atlas button. 
+<img src="picsfortut/q4.png" width="350"> 
+
+6. Select 'Ignore download errors and continue automatically' and continue.
+<img src="picsfortut/q5.png" width="350">
+
+7. After finishing download process rename the SQLite file as 'map.sqlite' and copy it into assets folder.
+<img src="picsfortut/q6.png" width="350"> 
 
 And yes! You completed the hard part. Rest of the steps just coding few lines.
 
