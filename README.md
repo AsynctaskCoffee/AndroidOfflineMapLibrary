@@ -162,7 +162,7 @@ class MainActivityKotlin : AppCompatActivity(), MapListener, GeoPointListener {
 ###### Add the dependency
 
 ```groovy
-    
+    implementation 'com.github.AsynctaskCoffee:AndroidOfflineMapLibrary:v1'
     implementation 'com.github.MKergall:osmbonuspack:6.6.0'
     implementation 'org.osmdroid:osmdroid-android:6.1.0'
 ```
