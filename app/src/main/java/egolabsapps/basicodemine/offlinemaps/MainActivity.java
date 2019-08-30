@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity implements MapListener, GeoP
 
     @Override
     public void onGeoPointRecieved(GeoPoint geoPoint) {
+
+        //Selected GeoPoint Returns Here
+
         Toast.makeText(this, geoPoint.toDoubleString(), Toast.LENGTH_SHORT).show();
     }
 }
