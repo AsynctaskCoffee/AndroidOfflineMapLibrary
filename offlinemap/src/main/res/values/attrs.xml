@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="OfflineMapView">
+
+        <attr name="initialFocusLongitude" format="float"/>
+        <attr name="initialFocusLatitude" format="float"/>
+        <attr name="zoomLevel" format="float"/>
+
+    </declare-styleable>
+</resources>

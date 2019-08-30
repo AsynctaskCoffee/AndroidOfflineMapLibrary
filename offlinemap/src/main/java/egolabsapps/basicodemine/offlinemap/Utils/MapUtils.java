@@ -50,11 +50,26 @@ public class MapUtils implements FileUtils.FileTransferListener {
     }
 
 
+    public void setInitialZoom(double zoomLevel) {
+        if (map != null) {
+            IMapController mapController = new MapController(map);
+            mapController.zoomTo(zoomLevel);
+        }
+    }
+
     public void setInitialPosition(GeoPoint initialPosition, double zoomLvl) {
         if (map != null) {
             IMapController mapController = new MapController(map);
             mapController.setCenter(initialPosition);
             mapController.zoomTo(zoomLvl);
+            map.getController().animateTo(initialPosition);
+        }
+    }
+
+    public void setInitialPositionX(GeoPoint initialPosition) {
+        if (map != null) {
+            IMapController mapController = new MapController(map);
+            mapController.setCenter(initialPosition);
             map.getController().animateTo(initialPosition);
         }
     }
@@ -105,7 +120,7 @@ public class MapUtils implements FileUtils.FileTransferListener {
                                 map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
                             }
                             map.invalidate();
-                            mapListener.mapLoadSuccess(map,mapUtils);
+                            mapListener.mapLoadSuccess(map, mapUtils);
                             return;
                         } catch (Exception ex) {
                             ex.printStackTrace();

@@ -2,14 +2,19 @@
 Offline OpenStreet Map Library (No Internet Required) You dont have to even one-time connect!
 
 > Offline OpenStreetMap Library
+
 > Performance friendly and scalable
 
 ## Why this project exists
-The normal videoview on Android is very costly in terms of performance. Also, due to the video resolution ratio and apk size, most developers don't want to include videos in the project. With this library, developers will have a performance-friendly video background with a few lines of code.
+
+Offline map usage is kind a problem for developers and there are rare 
 
 ## Features and Usage
 
 ### Easy implementation
+ 
+You need to download offline maptiles as SQLite format. And you should put them under assets folder.
+ 
  
 #### Java 
 
@@ -89,10 +94,13 @@ class MainActivityKotlin : AppCompatActivity(), MapListener, GeoPointListener {
 ```
 
 ```xml    
-  <egolabsapps.basicodemine.offlinemap.Views.OfflineMapView
+<egolabsapps.basicodemine.offlinemap.Views.OfflineMapView
         android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:initialFocusLatitude="41.025818"
+        app:initialFocusLongitude="28.973436"
+        app:zoomLevel="15" />
 ```
 
 ## Implementation
@@ -108,7 +116,7 @@ class MainActivityKotlin : AppCompatActivity(), MapListener, GeoPointListener {
 ###### Add the dependency
 
 ```groovy
-    implementation 'com.github.AsynctaskCoffee:VideoLayout:1.0'
+
 ```
 
 ## License

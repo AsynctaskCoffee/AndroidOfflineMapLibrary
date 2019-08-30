@@ -3,6 +3,7 @@ package egolabsapps.basicodemine.offlinemap.Views;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -36,6 +37,10 @@ public class OfflineMapView extends FrameLayout implements MapListener, Permissi
     private MapUtils mapUtils;
     private SpinKitView kitView;
     private boolean isAnimatePickerAdded = false;
+
+    private float attrLong;
+    private float attrLat;
+    private float attrZoomLevel;
 
     public void init(Activity activity, MapListener mapListener) {
         this.activity = activity;
@@ -78,6 +83,16 @@ public class OfflineMapView extends FrameLayout implements MapListener, Permissi
 
     public OfflineMapView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.OfflineMapView, 0, 0);
+        try {
+            attrZoomLevel = a.getFloat(R.styleable.OfflineMapView_zoomLevel, -1);
+            attrLat = a.getFloat(R.styleable.OfflineMapView_initialFocusLatitude, -1);
+            attrLong = a.getFloat(R.styleable.OfflineMapView_initialFocusLongitude, -1);
+        } finally {
+            a.recycle();
+        }
+
         PermissionResultListener.getInstance().setListener(this);
         kitView = new SpinKitView(context);
         Sprite kitStyle = new Pulse();
@@ -93,8 +108,16 @@ public class OfflineMapView extends FrameLayout implements MapListener, Permissi
         mapView.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         addView(mapView);
         kitView.setVisibility(GONE);
+
         if (this.mapUtils == null)
             this.mapUtils = mapUtils;
+
+        if (attrLong != -1 && attrLat != -1)
+            mapUtils.setInitialPositionX(new GeoPoint(attrLat, attrLong));
+
+        if (attrZoomLevel != -1)
+            mapUtils.setInitialZoom(attrZoomLevel);
+
         mapListener.mapLoadSuccess(mapView, mapUtils);
     }
 
