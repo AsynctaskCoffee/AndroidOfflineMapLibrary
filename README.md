@@ -5,6 +5,8 @@ Offline OpenStreet Map Library (No Internet Required) You dont have to even one-
 
 > Performance friendly and scalable
 
+#### [DETAILED MEDIUM POST](https://medium.com/@asynctaskcoffee/android-openstreetmap-offline-map-setup-8c71eee40088) 
+
 ## Why this project exists
 
 Offline map usage is kind a problem for developers and there are rare documentations. I believe this library will helpful for developers. 
