@@ -169,6 +169,12 @@ class MainActivityKotlin : AppCompatActivity(), MapListener, GeoPointListener {
     implementation 'org.osmdroid:osmdroid-android:6.1.0'
 ```
 
+
+## Update 20.01.2021
+
+Please add android:requestLegacyExternalStorage="true" in your manifest file.
+
+
 ## License
 
 ```
