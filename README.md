@@ -174,6 +174,9 @@ class MainActivityKotlin : AppCompatActivity(), MapListener, GeoPointListener {
 
 Please add android:requestLegacyExternalStorage="true" in your manifest file.
 
+## Update 25.08.2021
+
+Please check https://developer.android.com/about/versions/11/privacy/storage
 
 ## License
 
